@@ -295,7 +295,7 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
 ```
 ### Минимальный импорт
 
-Соблюдайте минимальное количество импортов. Например, опустите импорт `UIKit`, если импортируете `Foundation`.
+Соблюдайте минимальное количество импортов. Например, опустите импорт `Foundation`, если импортируете `UIKit`.
 
 ## Отступы
 
