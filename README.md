@@ -685,7 +685,7 @@ if let textContainer = self.textContainer {
 var subview: UIView?
 var volume: Double?
 
-// later on...
+// позднее...
 if let subview = subview, 
     let volume = volume {
     // что-то сделать с развернутыми subview и volume
