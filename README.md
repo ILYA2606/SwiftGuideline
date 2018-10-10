@@ -307,9 +307,9 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
 **Рекомендуется:**
 ```swift
 if user.isHappy {
-  // что-то сделаем
+    // что-то сделаем
 } else {
-  // сделаем что-то другое
+    // сделаем что-то другое
 }
 ```
 
@@ -317,10 +317,10 @@ if user.isHappy {
 ```swift
 if user.isHappy
 {
-  // что-то сделаем
+    // что-то сделаем
 }
 else {
-  // сделаем что-то другое
+    // сделаем что-то другое
 }
 ```
 
@@ -331,14 +331,14 @@ else {
 **Рекомендуется:**
 ```swift
 class TestDatabase: Database {
-  var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
+    var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
 }
 ```
 
 **Не рекомендуется:**
 ```swift
 class TestDatabase : Database {
-  var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
+    var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
 ```
 
@@ -371,39 +371,39 @@ class TestDatabase : Database {
 
 ```swift
 class Circle: Shape {
-  var x: Int, y: Int
-  var radius: Double
-  var diameter: Double {
-    get {
-      return radius * 2
+    var x: Int, y: Int
+    var radius: Double
+    var diameter: Double {
+        get {
+            return radius * 2
+        }
+        set {
+            radius = newValue / 2
+        }
     }
-    set {
-      radius = newValue / 2
+
+    init(x: Int, y: Int, radius: Double) {
+        self.x = x
+        self.y = y
+        self.radius = radius
     }
-  }
 
-  init(x: Int, y: Int, radius: Double) {
-    self.x = x
-    self.y = y
-    self.radius = radius
-  }
+    convenience init(x: Int, y: Int, diameter: Double) {
+        self.init(x: x, y: y, radius: diameter / 2)
+    }
 
-  convenience init(x: Int, y: Int, diameter: Double) {
-    self.init(x: x, y: y, radius: diameter / 2)
-  }
-
-  override func area() -> Double {
-    return Double.pi * radius * radius
-  }
+    override func area() -> Double {
+        return Double.pi * radius * radius
+    }
 }
 
 extension Circle: CustomStringConvertible {
-  var description: String {
-    return "center = \(centerString) area = \(area())"
-  }
-  private var centerString: String {
-    return "(\(x),\(y))"
-  }
+    var description: String {
+        return "center = \(centerString) area = \(area())"
+    }
+    private var centerString: String {
+        return "(\(x),\(y))"
+    }
 }
 ```
 
@@ -413,7 +413,6 @@ override func register(
     withСardNumber cardNumber: String,
     completion completionBlock: @escaping AuthService.RegisterWithCardNumberCompletionBlock,
     failure failureBlock: @escaping Service.ServiceFailureBlock) -> WebTransportOperation {
-
     // ...
 }
 ```
@@ -441,16 +440,16 @@ override func register(
 **Рекомендуется:**
 ```swift
 var diameter: Double {
-  return radius * 2
+    return radius * 2
 }
 ```
 
 **Не рекомендуется:**
 ```swift
 var diameter: Double {
-  get {
-    return radius * 2
-  }
+    get {
+        return radius * 2
+    }
 }
 ```
 
@@ -460,8 +459,8 @@ var diameter: Double {
 
 ```swift
 var homeFolderPath: Path {
-	//...
-  	return path
+    //...
+    return path
 }
 ```
 
@@ -469,8 +468,8 @@ var homeFolderPath: Path {
 
 ```swift
 func homeFolderPath() -> Path {
-	//...
-  	return path
+    //...
+    return path
 }
 ```
 
@@ -481,10 +480,10 @@ func homeFolderPath() -> Path {
 ```swift
 // Turn any generic type into a reference type using this Box class.
 final class Box<T> {
-  let value: T
-  init(_ value: T) {
-    self.value = value
-  }
+    let value: T
+    init(_ value: T) {
+        self.value = value
+    }
 }
 ```
 
@@ -496,7 +495,7 @@ final class Box<T> {
 
 ```swift
 func reticulateSplines(spline: [Double]) -> Bool {
-  // ...
+    // ...
 }
 ```
 
@@ -623,8 +622,8 @@ let widthString: NSString = width.stringValue // NSString
 **Рекомендуется:**
 ```swift
 enum Math {
-  static let e = 2.718281828459045235360287
-  static let root2 = 1.41421356237309504880168872
+    static let e = 2.718281828459045235360287
+    static let root2 = 1.41421356237309504880168872
 }
 
 let hypotenuse = side * Math.root2
@@ -673,7 +672,7 @@ self.textContainer?.textLabel?.setNeedsDisplay()
 
 ```swift
 if let textContainer = self.textContainer {
-    // do many things with textContainer
+    // ...
 }
 ```
 
