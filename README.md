@@ -504,9 +504,9 @@ func reticulateSplines(spline: [Double]) -> Bool {
 
 ```swift
 func reticulateSplines(spline: [Double], 
-    							   adjustmentFactor: Double,
-    							   translateConstant: Int, 
-    							   comment: String) -> Bool {
+    		       adjustmentFactor: Double,
+    		       translateConstant: Int, 
+    		       comment: String) -> Bool {
     // ...
 }
 ```
