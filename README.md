@@ -532,7 +532,6 @@ func colorView() {
     //...
 }
 
-
 func reticulate() {
     //...
 }
