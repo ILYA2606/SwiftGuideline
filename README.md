@@ -934,7 +934,7 @@ while i < attendeeList.count {
 **Рекомендуется:**
 ```swift
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
-	guard let context = context else { throw FFTError.noContext }
+    guard let context = context else { throw FFTError.noContext }
     guard let inputData = inputData else { throw FFTError.noInputData }
     // используем context и inputData для подсчета frequencies
     return frequencies
@@ -962,36 +962,6 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 Когда в оператор входят несколько условных выражений, надо добавить перенос строки перед новым операндом. Сложные условия лучше перенести в отдельные функции.
 
 **Рекомендуется:**
-```swift
-func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
-	guard let context = context else { throw FFTError.noContext }
-    guard let inputData = inputData else { throw FFTError.noInputData }
-    // используем context и inputData для подсчета frequencies
-    return frequencies
-}
-```
-
-**Не рекомендуется:**
-```swift
-func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
-    if let context = context {
-        if let inputData = inputData {
-        	// используем context и inputData для подсчета frequencies
-       		return frequencies
-        } else {
-        	throw FFTError.noInputData
-        }
-    } else {
-        throw FFTError.noContext
-    }
-}
-```
-
-## Multiple Conditionals
-
-When multiple conditionals are inside the operator, add line breaks before a new operand. Extract difficult conditions to functions.
-
-**Рекомендуется:**
 
 ```swift
 if isTrue(),
@@ -1017,10 +987,10 @@ guard
     let number1 = number1,
     let number2 = number2,
     let number3 = number3
-	else { 
-		clean()
-		fatalError("impossible") 
-	}
+    else { 
+	clean()
+	fatalError("impossible") 
+}
 // что-то делаем
 ```
 
@@ -1030,7 +1000,7 @@ guard
 guard 
     let number1 = number1, 
     let number2 = number2
-	else { return }
+    else { return }
 // что-то делаем
 ```
 
