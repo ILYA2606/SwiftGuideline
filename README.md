@@ -826,7 +826,7 @@ let value = max(x, y, z)
 **Рекомендуется**
 ```swift
 resource.request().onComplete { [weak self] response in
-    guard let `self` = self else { return }
+    guard let self = self else { return }
     let model = strongSelf.updateModel(response)
     strongSelf.updateUI(model)
 }
@@ -907,7 +907,6 @@ while i < 3 {
     i += 1
 }
 
-
 var i = 0
 while i < attendeeList.count {
     let person = attendeeList[i]
@@ -935,10 +934,10 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies {
     if let context = context {
         if let inputData = inputData {
-        	// используем context и inputData для подсчета frequencies
-       		return frequencies
+            // используем context и inputData для подсчета frequencies
+            return frequencies
         } else {
-        	throw FFTError.noInputData
+            throw FFTError.noInputData
         }
     } else {
         throw FFTError.noContext
@@ -978,8 +977,8 @@ guard
     let number2 = number2,
     let number3 = number3
 else { 
-	clean()
-	fatalError("impossible") 
+    clean()
+    fatalError("impossible") 
 }
 // что-то делаем
 ```
