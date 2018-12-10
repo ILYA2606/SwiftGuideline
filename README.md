@@ -24,7 +24,7 @@
   * [Использование self](#Использование-self)
   * [Вычисляемые свойства](#Вычисляемые-свойства)
   * [Использование final](#Использование-final)
-* [Объявление функций](#Объявление-функций)
+* [Объявление и вызов функций](#Объявление-и-вызов-функций)
 * [Выражения замыканий](#Выражения-замыканий)
 * [Типы](#Типы)
   * [Константы](#Константы)
@@ -407,16 +407,6 @@ extension Circle: CustomStringConvertible {
 }
 ```
 
-Когда сигнатура метода слишком длинная, параметры должны быть перенесены в новую строку:
-```swift 
-override func register(
-    withСardNumber cardNumber: String,
-    completion completionBlock: @escaping AuthService.RegisterWithCardNumberCompletionBlock,
-    failure failureBlock: @escaping Service.ServiceFailureBlock) -> WebTransportOperation {
-    // ...
-}
-```
-
 Пример выше демонстрирует следующие стили:
 
  + Указывайте типы для свойств, переменных, констант, объявлений аргументов и других операторов с пробелом после двоеточия, например. `x: Int` и `Circle: Shape`.
@@ -478,7 +468,6 @@ func homeFolderPath() -> Path {
 Маркировка классов как `final` в примерах может отвлекать от основной темы и не всегда требуется. Тем не менее, использование `final` может иногда уточнять ваши намерения и стоит затрат. В приведенном ниже примере `Box` имеет особую цель, и расширение в виде производного класса не предназначено. Пометка `final` делает это более понятным.
 
 ```swift
-// Turn any generic type into a reference type using this Box class.
 final class Box<T> {
     let value: T
     init(_ value: T) {
@@ -489,42 +478,41 @@ final class Box<T> {
 
 Также это улучшает чтение кода и ускоряет компиляцию.
 
-## Объявление функций
+## Объявление и вызов функций
 
 Сохраняйте короткие объявления функций или типов на одной строке, включая открывающую фигурную скобку:
 
 ```swift
-func reticulateSplines(spline: [Double]) -> Bool {
+func method(parameter: [Double]) -> Bool {
     // ...
 }
+
 ```
 
-Для функций надо добавить переносы строк для каждого аргумента, если они превышают руководство по ширине страницы:
+Для функций надо добавить переносы строк для каждого аргумента, включая первый, если они превышают руководство по ширине страницы. Для того, чтобы аргументы визуально не сливались с телом метода (ведь они с одним отступом), переносите завершающую скобку также на новую строку:
 
 ```swift
-func reticulateSplines(spline: [Double], 
-    		       adjustmentFactor: Double,
-    		       translateConstant: Int, 
-    		       comment: String) -> Bool {
+func method(
+    parameter1: [Double], 
+    parameter2: Double,
+    parameter3: Int
+) -> Bool {
     // ...
 }
-```
 
-или если параметры выходят за пределы ширины страницы:
-	
-```swift
-func reticulateSplines(
-    veryLoooooooooooooooooooooooooooooooooooongParameter: [Double], 
-    adjustmentFactor: Double,
-    translateConstant: Int, 
-    comment: String) -> Bool {
-    //...
-}
 ```
 
 Это же правило применяется и для вызовов функций.
+	
+```swift
+let result = method(
+    parameter1: parameter1, 
+    parameter2: parameter2,
+    parameter3: parameter3
+)
+```
 
-Оставьте одну или две пустые строки между функциями и одну после `MARK`
+Оставьте одну пустую строку между функциями и одну до и после `MARK`
 
 ```swift
 func colorView() {
@@ -534,7 +522,6 @@ func colorView() {
 func reticulate() {
     //...
 }
-
 
 // MARK: - Private Methods
 
@@ -686,7 +673,8 @@ var subview: UIView?
 var volume: Double?
 
 // позднее...
-if let subview = subview, 
+if 
+    let subview = subview, 
     let volume = volume {
     // что-то сделать с развернутыми subview и volume
 }
@@ -697,7 +685,8 @@ if let subview = subview,
 var optionalSubview: UIView?
 var volume: Double?
 
-if let unwrappedSubview = optionalSubview {
+if 
+    let unwrappedSubview = optionalSubview {
     if let realVolume = volume {
         // что-то сделать с развернутыми unwrappedSubview и realVolume
     }
@@ -959,12 +948,13 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
 
 ## Использование guard
 
-Когда в оператор входят несколько условных выражений, надо добавить перенос строки перед новым операндом. Сложные условия лучше перенести в отдельные функции.
+Когда в оператор входят несколько условных выражений, надо добавить перенос строки перед каждым операндом. Сложные условия лучше перенести в отдельные функции.
 
 **Рекомендуется:**
 
 ```swift
-if isTrue(),
+if 
+    isTrue(),
     isFalse(),
     tax > MinTax {
     // ...
@@ -987,7 +977,7 @@ guard
     let number1 = number1,
     let number2 = number2,
     let number3 = number3
-    else { 
+else { 
 	clean()
 	fatalError("impossible") 
 }
@@ -1000,7 +990,7 @@ guard
 guard 
     let number1 = number1, 
     let number2 = number2
-    else { return }
+else { return }
 // что-то делаем
 ```
 
