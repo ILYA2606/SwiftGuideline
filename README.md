@@ -207,7 +207,7 @@ let colour = "red"
 
 // MARK: - Constants
 
-// MARK: - IBOutlet
+// MARK: - IBOutlets
 
 // MARK: - Public Properties
 
@@ -217,7 +217,7 @@ let colour = "red"
 
 // MARK: - Public Methods
 
-// MARK: - IBAction
+// MARK: - IBActions
 
 // MARK: - Private Methods
 
