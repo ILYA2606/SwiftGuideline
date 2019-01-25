@@ -217,7 +217,7 @@ let colour = "red"
 
 // MARK: - UIViewController(*)
 
-// MARK: - Public methods
+// MARK: - Public Methods
 
 // MARK: - IBAction
 
