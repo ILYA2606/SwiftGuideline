@@ -213,8 +213,6 @@ let colour = "red"
 
 // MARK: - Private Properties
 
-// MARK: - Initializers
-
 // MARK: - UIViewController(*)
 
 // MARK: - Public Methods
