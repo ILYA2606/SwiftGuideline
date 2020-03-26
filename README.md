@@ -737,14 +737,14 @@ let names = [String]()
 
 **Рекомендуется:**
 ```swift
-var names = [String]()
-var lookup = [String: Int]()
+var names: [String] = []
+var lookup: [String: Int] = [:]
 ```
 
 **Не рекомендуется:**
 ```swift
-var names: [String] = []
-var lookup: [String: Int] = [:]
+var names = [String]()
+var lookup = [String: Int]()
 ```
 
 **Примечание**: Следуя этому руководству, выбор понятных имен еще более важен, чем раньше. Массивы, желательно, именовать существительным во множественном числе (Например, `names`).
