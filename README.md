@@ -573,9 +573,9 @@ attendeeList.sort { a, b in
 
 ```swift
 let value = numbers
-    .map {$0 * 2}
-    .filter {$0 > 50}
-    .map {$0 + 10}
+    .map { $0 * 2 }
+    .filter { $0 > 50 }
+    .map { $0 + 10 }
 ```
 
 ## Типы
