@@ -84,6 +84,10 @@
 - Выбирайте само-документируемые имена для параметров
 - Маркируйте параметры, если они являются замыканием или кортежем
 - Используйте параметры по умолчанию
+- Из названия объекта должен быть намек на его тип, это улучшает читаемость кода:
+  - Массивы с суффиксом множественного числа (Например, `names`, `userIDs`, `mainIndexes`)
+  - Словари с суффиксом `Map` (Например, `userRatingMap`)
+  - Множества с суффиксом `Set` (Например, `imageSet`)
 
 ### Методы
 
@@ -329,14 +333,14 @@ else {
 **Рекомендуется:**
 ```swift
 class TestDatabase: Database {
-    var data: [String: CGFloat] = ["A": 1.2, "B": 3.2]
+    var dataMap: [String: CGFloat] = ["A": 1.2, "B": 3.2]
 }
 ```
 
 **Не рекомендуется:**
 ```swift
 class TestDatabase : Database {
-    var data :[String:CGFloat] = ["A" : 1.2, "B":3.2]
+    var dataMap :[String:CGFloat] = ["A" : 1.2, "B":3.2]
 }
 ```
 
@@ -564,7 +568,7 @@ UIView.animate(withDuration: 1.0, animations: {
 Для замыканий с одним выражением, где контекст понятен, используйте неявный возврат:
 
 ```swift
-attendeeList.sort { a, b in
+participants.sort { a, b in
     a > b
 }
 ```
@@ -738,17 +742,14 @@ let names = [String]()
 **Рекомендуется:**
 ```swift
 var names: [String] = []
-var lookup: [String: Int] = [:]
+var lookupMap: [String: Int] = [:]
 ```
 
 **Не рекомендуется:**
 ```swift
 var names = [String]()
-var lookup = [String: Int]()
+var lookupMap = [String: Int]()
 ```
-
-**Примечание**: Следуя этому руководству, выбор понятных имен еще более важен, чем раньше. Массивы, желательно, именовать существительным во множественном числе (Например, `names`).
-
 
 ### Синтаксический сахар
 
@@ -757,14 +758,14 @@ var lookup = [String: Int]()
 **Рекомендуется:**
 ```swift
 var deviceModels: [String]
-var employees: [Int: String]
+var employeeMap: [Int: String]
 var faxNumber: Int?
 ```
 
 **Не рекомендуется:**
 ```swift
 var deviceModels: Array<String>
-var employees: Dictionary<Int, String>
+var employeeMap: Dictionary<Int, String>
 var faxNumber: Optional<Int>
 ```
 
@@ -775,7 +776,7 @@ var faxNumber: Optional<Int>
 **Рекомендуется:**
 
 ```swift
-let deviceModels = ["BMW": 100, "Mercedes": 120]
+let deviceModelMap = ["BMW": 100, "Mercedes": 120]
 let wheels = [
     "Continental", 
     "Vitoria", 
@@ -797,13 +798,13 @@ let wheels = ["Continental", "Vitoria", // параметры, превышаю�
 
 **Рекомендуется**
 ```swift
-let sorted = items.mergeSorted()  // легко найти
+let sortedItems = items.mergeSorted()  // легко найти
 rocket.launch()  // воздействует только на модель
 ```
 
 **Не рекомендуется**
 ```swift
-let sorted = mergeSort(items)  // сложно найти
+let sortedItems = mergeSort(items)  // сложно найти
 launch(&rocket)
 ```
 
@@ -825,8 +826,8 @@ let value = max(x, y, z)
 ```swift
 resource.request().onComplete { [weak self] response in
     guard let self = self else { return }
-    let model = strongSelf.updateModel(response)
-    strongSelf.updateUI(model)
+    let model = self.updateModel(response)
+    self.updateUI(model)
 }
 ```
 
@@ -880,11 +881,11 @@ class TimeMachine {
 
 **Рекомендуется:**
 ```swift
-for _ in 0..<3 {
+for _ in 0 ..< 3 {
     print("Hello three times")
 }
 
-for (index, person) in attendeeList.enumerated() {
+for (index, person) in participants.enumerated() {
     print("\(person) is at position #\(index)")
 }
 
@@ -892,7 +893,7 @@ for index in stride(from: 0, to: items.count, by: 2) {
      print(index)
 }
 
-for index in (0...3).reversed() {
+for index in (0 ... 3).reversed() {
      print(index)
 }
 ```
@@ -906,8 +907,8 @@ while i < 3 {
 }
 
 var i = 0
-while i < attendeeList.count {
-    let person = attendeeList[i]
+while i < participants.count {
+    let person = participants[i]
     print("\(person) is at position #\(i)")
     i += 1
 }
@@ -1058,7 +1059,7 @@ if (name == "Hello") {
 
 **Рекомендуется:**
 ```swift
-let playerMark = (player == current ? "X" : "O") && player.active
+let isPlayerMarked = (player == current ? "X" : "O") && player.active
 ```
 
 ## Формат организации и Bundle Identifier
